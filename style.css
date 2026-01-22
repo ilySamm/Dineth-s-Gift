@@ -1,4 +1,4 @@
-body.login-page {
+body {
     background-image: url('background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -73,5 +73,6 @@ login-page h1 {
         line-height: 1.2;  /* Espacio entre líneas por si el texto salta */
     }
 }
+
 
 

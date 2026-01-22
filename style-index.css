@@ -1,13 +1,3 @@
-body.main-website {
-    background-image: url("bg2.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    margin: 0;
-
-}
-
 .akaya-telivigala-regular {
   font-family: "Akaya Telivigala", system-ui;
   font-weight: 400;
@@ -18,23 +8,6 @@ body.main-website {
   font-family: "Akaya Telivigala", system-ui;
   font-weight: 400;
   font-style: normal;
-  color: white;
-  text-align: center;
-}
-
-body.main-website {
-    background-image: url('img/background2.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    margin: 0;
-}
-
-.main-website h1{
-  font-family: "Akaya Telivigala", system-ui;
-  font-weight: 400;
-  font-style: normal;
 }
 
 body.main-website {
@@ -46,8 +19,6 @@ body.main-website {
     margin: 0;
 
 }
-
-
 
 
 .swiper {
@@ -76,6 +47,7 @@ body.main-website {
         padding: 0 20px;   /* Margen a los lados para que no toque los bordes */
         line-height: 1.2;  /* Espacio entre líneas por si el texto salta */
     }}
+
 
 
 

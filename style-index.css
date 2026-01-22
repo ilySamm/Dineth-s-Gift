@@ -1,4 +1,4 @@
-body{
+body.main-website {
     background-image: url("background.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -76,6 +76,7 @@ body.main-website {
         padding: 0 20px;   /* Margen a los lados para que no toque los bordes */
         line-height: 1.2;  /* Espacio entre líneas por si el texto salta */
     }}
+
 
 
 

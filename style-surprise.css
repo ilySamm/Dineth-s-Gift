@@ -11,6 +11,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Akaya Telivigala', cursive;
+    overflow: hidden;
         background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -145,7 +146,6 @@ body {
         transform: scale(0.7);
     }
 }
-
 
 @keyframes flicker { from { opacity: 0.8; } to { opacity: 1; transform: translateX(-50%) scale(1.1); } }
 

@@ -1,5 +1,5 @@
 body {
-    background-image: url('background.png');
+    background-image: url("background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -73,6 +73,7 @@ login-page h1 {
         line-height: 1.2;  /* Espacio entre líneas por si el texto salta */
     }
 }
+
 
 
 

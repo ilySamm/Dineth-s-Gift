@@ -10,7 +10,7 @@
   font-style: normal;
 }
 
-body.main-website {
+body {
     background-image: url('bg2.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -47,6 +47,7 @@ body.main-website {
         padding: 0 20px;   /* Margen a los lados para que no toque los bordes */
         line-height: 1.2;  /* Espacio entre líneas por si el texto salta */
     }}
+
 
 
 

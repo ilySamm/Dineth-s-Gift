@@ -13,35 +13,26 @@
 </head>
 
 <body class="main-website">
-      <div class = main-text>
-         <!-- TEXTO PRINCIPAL -->
-      <h1> ¡Feliz cumpleaños mi niña💙!</h1>
-      </div>
+    <canvas id="heartCanvas"></canvas>
+    <div class=main-text>
+        <h1> ¡Feliz cumpleaños mi niña💙!</h1>
+    </div>
     <audio id="musicaFondo" loop>
-        <source src="audio.mp3" type="audio/mpeg">
+        <source src="audio/audio.m4a" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
-
-    <!-- Script para el audio que se reproduce en la pagina  / Samuel -->
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Intentar reproducir apenas cargue la página
         window.addEventListener('DOMContentLoaded', (event) => {
             const audio = document.getElementById('musicaFondo');
-
-            // Ajustar el volumen (opcional, 0.5 es el 50%)
             audio.volume = 0.5;
 
-            // Reproducción automática
             const playPromise = audio.play();
 
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
                     console.log("Música iniciada correctamente");
                 }).catch(error => {
-                    // Si el navegador bloquea el autoplay, 
-                    // la música sonará al primer clic que ella haga en la pantalla.
                     console.log("El autoplay fue bloqueado, esperando interacción.");
                     document.body.addEventListener('click', () => {
                         audio.play();
@@ -50,17 +41,15 @@
             }
         });
     </script>
-
-
-
-    <!-- Slider de imágenes / Samuel -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="img/1.jpg" alt="Recuerdo 1"></div>
-            <div class="swiper-slide"><img src="img/2.jpg" alt="Recuerdo 2"></div>
-            <div class="swiper-slide"><img src="img/foto3.jpg" alt="Recuerdo 3"></div>
+            <div class="swiper-slide"><img src="img/1.jpg" alt="💙"></div>
+            <div class="swiper-slide"><img src="img/2.jpg" alt="💙"></div>
+            <div class="swiper-slide"><img src="img/3.jpg" alt="💙"></div>
+            <div class="swiper-slide"><img src="img/4.jpg" alt="💙"></div>
+            <div class="swiper-slide"><img src="img/5.jpg" alt="💙"></div>
+            <div class="swiper-slide"><img src="img/6.jpg" alt="💙"></div>
         </div>
-
         <div class="swiper-pagination"></div>
     </div>
 
@@ -69,32 +58,120 @@
     <script>
         const swiper = new Swiper(".mySwiper", {
             loop: true,
-            effect: "fade", // Aquí activamos el desvanecimiento
+            effect: "fade",
             fadeEffect: {
-                crossFade: true // Esto hace que la transición sea mucho más suave
+                crossFade: true
             },
             autoplay: {
-                delay: 3000,
+                delay: 2000,
                 disableOnInteraction: false,
             },
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
             },
-            grabCursor: true, // Para que se pueda arrastrar con el mouse o touch
+            grabCursor: true,
         });
     </script>
 
+     <div class="message-container" data-aos="fade-up" data-aos-duration="1000">
+    <div class="message-card">
+        <span class="heart-icon">💙</span>
+        <p>
+            ¡Feliz cumpleaños mi vida, felices 18!...
+            "A la distancia celebro contigo este año que sumas, un año más de vida, de experiencias, de aprendizajes y de momentos compartidos. Deseo mucho que este año se cumplan las metas que tanto anhelas y manifiestas.
+            Disfruta mucho tu día, ríe, ama, sueña y sobre todo sé feliz. Te mereces lo mejor hoy y siempre."
+        </p>
+        <span class="signature">Con amor, Samuel</span>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <button id="btn-sorpresa" class="glass-button">
+        Sorpresa 🥳💙
+    </button>
+</div>
+
+<script>
+    const botonSorpresa = document.getElementById('btn-sorpresa');
+    
+    if (botonSorpresa) {
+        botonSorpresa.addEventListener('click', function() {
+            setTimeout(() => {
+                window.location.href = 'sorpresa.html'; 
+            }, 200);
+        });
+    }
+</script>
+</div>
 
 
 
+
+<script>
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let hearts = [];
+
+        class Heart {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20; 
+                this.size = Math.random() * 15 + 10;
+                this.speed = Math.random() * 1.5 + 0.5;
+                this.opacity = Math.random() * 0.3 + 0.1; 
+            }
+
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.font = `${this.size}px serif`;
+                ctx.fillText('❤️', this.x, this.y);
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) this.reset();
+            }
+        }
+
+        function init() {
+            hearts = [];
+            for (let i = 0; i < 30; i++) {
+                hearts.push(new Heart());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(h => { 
+                h.draw(); 
+                h.update(); 
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
 
 </body>
 
 </html>
 
-</body>
-</html>
 
 
 

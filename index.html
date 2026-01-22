@@ -23,17 +23,14 @@
         const input = document.getElementById('nameInput');
 
         form.addEventListener('submit', function(e) {
-            // Pasamos todo a minúsculas para que no importe si escribe "dineth" o "Dineth"
             const nombre = input.value.trim().toLowerCase();
 
             if (nombre !== "dineth") {
-                e.preventDefault(); // Detiene el envío del formulario
+                e.preventDefault();
                 alert("Mmm... 🤔 ¡Ese no es el nombre de la cumpleañera! Intenta otra vez.");
-                input.value = ""; // Limpia el input
+                input.value = "";
             }
-            // Si es "dineth", el formulario sigue su curso normal hacia index.html
         });
     </script>
 </body>
-
 </html>

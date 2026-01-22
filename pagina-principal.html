@@ -48,8 +48,8 @@
     <!-- Slider de imágenes / Samuel -->
     <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="img/foto1.jpg" alt="Recuerdo 1"></div>
-    <div class="swiper-slide"><img src="img/foto2.jpg" alt="Recuerdo 2"></div>
+    <div class="swiper-slide"><img src="img/1.jpg" alt="Recuerdo 1"></div>
+    <div class="swiper-slide"><img src="img/2.jpg" alt="Recuerdo 2"></div>
     <div class="swiper-slide"><img src="img/foto3.jpg" alt="Recuerdo 3"></div>
   </div>
   
@@ -60,22 +60,20 @@
 
 <script>
     const swiper = new Swiper(".mySwiper", {
-    loop: true,               // Infinito
+    loop: true,
+    effect: "fade", // Aquí activamos el desvanecimiento
+    fadeEffect: {
+        crossFade: true // Esto hace que la transición sea mucho más suave
+    },
     autoplay: {
-        delay: 3000,          // Cambia cada 3 segundos
-        disableOnInteraction: false, // Sigue automático aunque lo toques
+        delay: 3000,
+        disableOnInteraction: false,
     },
     pagination: {
         el: ".swiper-pagination",
-        clickable: true,      // Se puede hacer clic en los puntos
+        clickable: true,
     },
-    // Esto activa el soporte para mouse y touch por defecto
-    grabCursor: true,         // El mouse se vuelve una "mano"
-    effect: "creative",       // Puedes cambiarlo a "fade" o "coverflow"
-    creativeEffect: {
-        prev: { translate: ["-120%", 0, -500] },
-        next: { translate: ["120%", 0, -500] },
-    },
+    grabCursor: true, // Para que se pueda arrastrar con el mouse o touch
 });
 </script>
 

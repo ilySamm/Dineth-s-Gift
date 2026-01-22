@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>💙</title>
+</head>
+<body class="main-website">
+    <h1> ¡Feliz cumpleaños mi niña💙!</h1>
+    <audio id="musicaFondo" loop>
+    <source src="audio/audio.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
+    <!-- Script para el audio que se reproduce en la pagina  / Samuel -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Intentar reproducir apenas cargue la página
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const audio = document.getElementById('musicaFondo');
+        
+        // Ajustar el volumen (opcional, 0.5 es el 50%)
+        audio.volume = 0.5;
+
+        // Reproducción automática
+        const playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                console.log("Música iniciada correctamente");
+            }).catch(error => {
+                // Si el navegador bloquea el autoplay, 
+                // la música sonará al primer clic que ella haga en la pantalla.
+                console.log("El autoplay fue bloqueado, esperando interacción.");
+                document.body.addEventListener('click', () => {
+                    audio.play();
+                }, { once: true });
+            });
+        }
+    });
+</script>
+
+
+
+    <!-- Slider de imágenes / Samuel -->
+    <div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="img/foto1.jpg" alt="Recuerdo 1"></div>
+    <div class="swiper-slide"><img src="img/foto2.jpg" alt="Recuerdo 2"></div>
+    <div class="swiper-slide"><img src="img/foto3.jpg" alt="Recuerdo 3"></div>
+  </div>
+  
+  <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper(".mySwiper", {
+    loop: true,               // Infinito
+    autoplay: {
+        delay: 3000,          // Cambia cada 3 segundos
+        disableOnInteraction: false, // Sigue automático aunque lo toques
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,      // Se puede hacer clic en los puntos
+    },
+    // Esto activa el soporte para mouse y touch por defecto
+    grabCursor: true,         // El mouse se vuelve una "mano"
+    effect: "creative",       // Puedes cambiarlo a "fade" o "coverflow"
+    creativeEffect: {
+        prev: { translate: ["-120%", 0, -500] },
+        next: { translate: ["120%", 0, -500] },
+    },
+});
+</script>
+
+</body>
+</html>

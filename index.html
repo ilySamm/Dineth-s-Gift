@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Love you babe</title>
+</head>
+
+
+<body class="login-page">
+    <form id="loginForm" action="pagina-principal.html" class="login-page-container">
+        <h1 class="login-page">¿Quién cumple años hoy? 🤔</h1>
+        <input type="text" id="nameInput" placeholder="Escribe tu nombre mi niña hermosa 💙" required>
+    </form>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const input = document.getElementById('nameInput');
+
+        form.addEventListener('submit', function(e) {
+            // Pasamos todo a minúsculas para que no importe si escribe "dineth" o "Dineth"
+            const nombre = input.value.trim().toLowerCase();
+
+            if (nombre !== "dineth") {
+                e.preventDefault(); // Detiene el envío del formulario
+                alert("Mmm... 🤔 ¡Ese no es el nombre de la cumpleañera! Intenta otra vez.");
+                input.value = ""; // Limpia el input
+            }
+            // Si es "dineth", el formulario sigue su curso normal hacia index.html
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+body.login-page {
+    background-image: url('img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    font-family: "Cormorant Garamond", serif;
+}
+
+
+.cormorant-garamond {
+    font-optical-sizing: auto;
+    font-weight: 700vh;
+    font-style: bold;
+}
+
+login-page h1 {
+    position: center;
+    text-align: center;
+}
+
+.login-page input {
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Para compatibilidad en Safari */
+    
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    
+    padding: 15px 25px;
+    color: #555454;
+    font-size: 1.1rem;
+    outline: none;
+    width: 80%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al hacer clic (Brillo líquido) */
+.login-page input:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+    transform: scale(1.02); /* Crece un poquito, como si fuera elástico */
+    padding: 15px 20px;
+    color: black;
+}
+
+
+
+/* Color del texto de ayuda (Placeholder) */
+.login-page input::placeholder {
+    color: rgba(54, 54, 54, 0.7);
+    font-family: "Cormorant Garamond", serif;
+    text-align: center;
+    
+}
+
+@media (max-width: 480px) {
+    .login-page h1 {
+        font-size: 1.8rem; /* Tamaño más pequeño para móvil */
+        padding: 0 20px;   /* Margen a los lados para que no toque los bordes */
+        line-height: 1.2;  /* Espacio entre líneas por si el texto salta */
+    }
+}
+

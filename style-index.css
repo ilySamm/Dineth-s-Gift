@@ -1,4 +1,4 @@
-body.main-website {
+body {
     background-image: url('background2.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -37,3 +37,4 @@ body.main-website {
     }
 
 }
+

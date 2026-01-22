@@ -1,82 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style-index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>💙</title>
 </head>
+
 <body class="main-website">
-    <h1> ¡Feliz cumpleaños mi niña💙!</h1>
+      <div class = main-text>
+         <!-- TEXTO PRINCIPAL -->
+      <h1> ¡Feliz cumpleaños mi niña💙!</h1>
+      </div>
     <audio id="musicaFondo" loop>
-    <source src="audio.mp3" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
-</audio>
+        <source src="audio/audio.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
     <!-- Script para el audio que se reproduce en la pagina  / Samuel -->
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    // Intentar reproducir apenas cargue la página
-    window.addEventListener('DOMContentLoaded', (event) => {
-        const audio = document.getElementById('musicaFondo');
-        
-        // Ajustar el volumen (opcional, 0.5 es el 50%)
-        audio.volume = 0.5;
+    <script>
+        // Intentar reproducir apenas cargue la página
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const audio = document.getElementById('musicaFondo');
 
-        // Reproducción automática
-        const playPromise = audio.play();
+            // Ajustar el volumen (opcional, 0.5 es el 50%)
+            audio.volume = 0.5;
 
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                console.log("Música iniciada correctamente");
-            }).catch(error => {
-                // Si el navegador bloquea el autoplay, 
-                // la música sonará al primer clic que ella haga en la pantalla.
-                console.log("El autoplay fue bloqueado, esperando interacción.");
-                document.body.addEventListener('click', () => {
-                    audio.play();
-                }, { once: true });
-            });
-        }
-    });
-</script>
+            // Reproducción automática
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    console.log("Música iniciada correctamente");
+                }).catch(error => {
+                    // Si el navegador bloquea el autoplay, 
+                    // la música sonará al primer clic que ella haga en la pantalla.
+                    console.log("El autoplay fue bloqueado, esperando interacción.");
+                    document.body.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+    </script>
 
 
 
     <!-- Slider de imágenes / Samuel -->
     <div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="img/1.jpg" alt="Recuerdo 1"></div>
-    <div class="swiper-slide"><img src="img/2.jpg" alt="Recuerdo 2"></div>
-    <div class="swiper-slide"><img src="img/foto3.jpg" alt="Recuerdo 3"></div>
-  </div>
-  
-  <div class="swiper-pagination"></div>
-</div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/1.jpg" alt="Recuerdo 1"></div>
+            <div class="swiper-slide"><img src="img/2.jpg" alt="Recuerdo 2"></div>
+            <div class="swiper-slide"><img src="img/foto3.jpg" alt="Recuerdo 3"></div>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <div class="swiper-pagination"></div>
+    </div>
 
-<script>
-    const swiper = new Swiper(".mySwiper", {
-    loop: true,
-    effect: "fade", // Aquí activamos el desvanecimiento
-    fadeEffect: {
-        crossFade: true // Esto hace que la transición sea mucho más suave
-    },
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    grabCursor: true, // Para que se pueda arrastrar con el mouse o touch
-});
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            effect: "fade", // Aquí activamos el desvanecimiento
+            fadeEffect: {
+                crossFade: true // Esto hace que la transición sea mucho más suave
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            grabCursor: true, // Para que se pueda arrastrar con el mouse o touch
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>
 
 </body>
 </html>
+
 

@@ -1,0 +1,150 @@
+:root {
+    --glaze-color: #d32f2f;
+    --cake-base: #ffffff;
+}
+
+body {
+    background-image: url('img/background.png');
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Akaya Telivigala', cursive;
+    overflow: hidden;
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor que escala todo el pastel sin deformarlo */
+.main-wrapper {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    min-height: 100vh;      /* Ocupa toda la altura del celular */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cake-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centra el 18, el pastel y el texto entre sí */
+    text-align: center;
+}
+
+.instruction {
+    margin-top: 30px;       /* Espacio entre el plato y el texto */
+    font-size: 1.5rem;
+    width: 100%;            /* Para que el texto no se corte */
+}
+
+/* MANTENEMOS LAS MEDIDAS QUE SE VEÍAN BIEN */
+.cake { position: relative; width: 300px; display: flex; flex-direction: column; align-items: center; }
+
+.tier {
+    position: relative;
+    background: var(--cake-base);
+    border-radius: 15px 15px 5px 5px;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+}
+
+.tier-1 { width: 120px; height: 60px; z-index: 4; }
+.tier-2 { width: 180px; height: 70px; margin-top: -10px; z-index: 3; }
+.tier-3 { width: 240px; height: 80px; margin-top: -10px; z-index: 2; }
+
+.dripping-glaze {
+    position: absolute;
+    top: 0; width: 100%; height: 35%;
+    background: var(--glaze-color);
+    border-radius: 12px 12px 0 0;
+}
+
+.dripping-glaze::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 0; width: 100%; height: 15px;
+    background-image: radial-gradient(circle at 10px 0, var(--glaze-color) 10px, transparent 11px);
+    background-size: 20px 20px;
+}
+
+.number-candle { position: relative; cursor: pointer; z-index: 10; height: 90px; }
+.number {
+    font-size: 80px;
+    font-weight: bold;
+    color: var(--glaze-color);
+    text-shadow: 3px 3px 0px #fff, 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+.flame {
+    position: absolute;
+    top: -5px; left: 50%;
+    transform: translateX(-50%);
+    width: 18px; height: 28px;
+    background: orange;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 20px orange, 0 0 40px red;
+    animation: flicker 0.1s infinite alternate;
+}
+
+.plate { width: 300px; height: 20px; background: #e0e0e0; border-radius: 50%; margin-top: -10px; }
+
+/* ESTILO LIQUID GLASS ACTUALIZADO */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.15); /* Oscurecemos un poco más para que resalte el cristal */
+    display: none; /* JS cambiará esto a 'flex' */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: black;
+}
+
+.popup {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    width: 85%;
+    max-width: 350px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    animation: popShow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: black;
+}
+
+@keyframes popShow {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.popup h2 { color: #000000; margin-bottom: 10px; font-size: 1.8rem; }
+.popup p { color: #000000; font-size: 1.1rem; margin-bottom: 20px; }
+
+
+/* RESPONSIVIDAD INTELIGENTE: ESCALAR EN LUGAR DE RE-CALCULAR */
+@media (max-width: 400px) {
+    #cake-scale-wrapper {
+        transform: scale(0.85);
+    }
+}
+
+@media (max-width: 330px) {
+    #cake-scale-wrapper {
+        transform: scale(0.7);
+    }
+}
+
+@keyframes flicker { from { opacity: 0.8; } to { opacity: 1; transform: translateX(-50%) scale(1.1); } }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños! 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-surprise.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+</head>
+<body>
+         <audio id="musicaFondo" loop>
+        <source src="audio/audio2.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+   <div class="main-wrapper">
+    <div class="cake-container" id="cake-scale-wrapper">
+        <div class="number-candle" id="candle-18">
+            <div class="flame" id="main-flame"></div>
+            <span class="number">18</span>
+        </div>
+        
+        <div class="cake">
+            <div class="tier tier-1"><div class="dripping-glaze"></div></div>
+            <div class="tier tier-2"><div class="dripping-glaze"></div></div>
+            <div class="tier tier-3"><div class="dripping-glaze"></div></div>
+            <div class="plate"></div>
+        </div>
+
+        <h1 class="instruction">Toca el "18" para pedir tu deseo ✨</h1>
+    </div>
+</div>
+
+<div id="overlay" class="overlay" style="display: none;"> <div class="popup">
+        <h2>✨ ¡Deseo Concedido! ✨</h2>
+        <p>¡Felices 18 años mi reina!💙</p>
+    </div>
+</div>
+  
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const candle = document.getElementById('candle-18');
+            const flame = document.getElementById('main-flame');
+            const overlay = document.getElementById('overlay');
+
+            if (candle) {
+                candle.onclick = function() {
+                    // 1. Apagar llama
+                    if (flame) flame.style.display = 'none';
+                    candle.style.opacity = '0.5';
+
+                    // 2. Confeti (opcional, si falla no detiene el resto)
+                    try {
+                        confetti({
+                            particleCount: 100,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                        });
+                    } catch(e) {}
+
+                    // 3. Mostrar Pop-up forzado
+                    setTimeout(() => {
+                        overlay.style.setProperty('display', 'flex', 'important');
+                    }, 600);
+                };
+            }
+        });
+
+        // Script para el audio que se reproduce en la pagina / Samuel
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const audio = document.getElementById('musicaFondo');
+
+            // Ajustar el volumen (opcional, 0.5 es el 50%)
+            audio.volume = 0.5;
+
+            // Reproducción automática
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    console.log("Música iniciada correctamente");
+                }).catch(error => {
+                    // Si el navegador bloquea el autoplay, 
+                    // la música sonará al primer clic que ella haga en la pantalla.
+                    console.log("El autoplay fue bloqueado, esperando interacción.");
+                    document.body.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+    </script>
+        
+
+
+
+</body>
+</html>
